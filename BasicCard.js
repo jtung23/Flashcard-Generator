@@ -1,17 +1,21 @@
-var inquire = require('inquirer');
-var BasicCard = function(front, back) {
-	
+var inquire = require('./inquire.js');
+var inq = new inquire();
 
-	var this.front = function() {
-		front;
+var BasicCard = function(front, back) {
+	console.log('basiccard runs');
+	this.front = function(front, back) {
+		console.log('basiccard front runs')
+		inq.basicFront(front, back);
+		console.log(front)
 	}
-	var this.back = function() {
-		back;
-	}
+	// this.back = function(back) {
+	// 	console.log('basic card back runs')
+	// 	console.log(back)
+	// }
 }
 
 
 module.exports = BasicCard;
 
 //logic:
-//prompts
+//prompts basic card or cloze card

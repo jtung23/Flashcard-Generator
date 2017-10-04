@@ -1,11 +1,10 @@
-var Basic = require('./BasicCard.js');
-var Cloze = require('./ClozeCard.js');
+var inquire = require('./inquire.js');
+var inq = new inquire();
 
-//constructer variables
 
-var cardType = process.argv[2];
-var BasicCard = new Basic();
-var ClozeCard = new Cloze();
-if (cardType === "basic") {
+inq.prompt();
 
-}
+
+//logic:
+// plug in random front and back index 
+
