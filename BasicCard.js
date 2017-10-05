@@ -1,21 +1,35 @@
-var inquire = require('./inquire.js');
-var inq = new inquire();
+var inquirer = require('inquirer');
 
-var BasicCard = function(front, back) {
-	console.log('basiccard runs');
-	this.front = function(front, back) {
-		console.log('basiccard front runs')
-		inq.basicFront(front, back);
-		console.log(front)
+// Array of questions
+var frontArr = ['Who was the First President of the USA?',
+	'Who is the current President of the USA?']
+var backArr = ['George Washington', 'Donald Trump'];
+
+// picks random front and back
+var random = Math.floor(Math.random() * frontArr.length);
+var randFront = frontArr[random];
+var randBack = backArr[random];
+
+var BasicCard = function() {
+	this.front = function() {
+		inquirer
+			.prompt([
+				{
+					type: 'input',
+					name: 'question',
+					message: randFront
+				}
+			])
+			.then(function(result) {
+				if (result.question === randBack) {
+					console.log("Correct! the Answer is " + randBack);
+				} else {
+					console.log("Wrong! The correct answer is: " + randBack)
+				}
+			})
 	}
-	// this.back = function(back) {
-	// 	console.log('basic card back runs')
-	// 	console.log(back)
-	// }
 }
 
 
 module.exports = BasicCard;
-
-//logic:
-//prompts basic card or cloze card
+	
